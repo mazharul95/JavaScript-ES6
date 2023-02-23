@@ -3,11 +3,15 @@ The traditional ES5 type syntax for declaring and initializing a variable is as 
 */
 //Declaration using var keyword
 // var variable_name = value;
+//var globalScope variable
 
 var personName = "Tom";
 console.log("The value in the variable is: " + personName);
 
 //let:let it to reassign
+//let: let is blocks code;like inside function block work properly let,
+//function outside block let does not work;give a error;
+
 let money = 25;
 money = 35;
 console.log(money);
