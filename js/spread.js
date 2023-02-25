@@ -1,3 +1,4 @@
+//array max number
 const max = Math.max(12,25,85,999,78);
 //console.log(max);
 
