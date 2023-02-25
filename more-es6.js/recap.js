@@ -20,7 +20,6 @@ const elementHTML = `
 <p>Address: </p>
 <p>Salary: ${calculateSalary(10000,0,0)}</p>
 <p>Other:${numbers[2]}</p>
-
 </div>
 `
 //4. arrow function
@@ -33,5 +32,8 @@ const calculateSalary2 = (salary, tax, bonus) => salary - salary * tax + bonus;
 const ages = [12,13,15,14,10,16];
 const newAges = [...ages,22, 24, 23];
 
-//6.destructuring
-const = { x: 45, y: 26, z: 35, name:'sakib al hasan', salary:450000}
+//6.destructuring object
+//{x, y, z, ...c} ...c -> means rest of object/array or the pices
+const {x, y, z, ...c} = { x: 45, y: 26, z: 35, name:'Sakib al Hasan', salary:450000}
+//destructuring array
+const [a,b, ...r] = [12,45,21,65,98]
