@@ -36,3 +36,9 @@ function getBrothers(){
 }
 const [elder, younger] = getBrothers();
 console.log(younger, elder);
+
+function getSum(a, b=9){
+    return a+b;
+}
+const sum = getSum(2,7);
+console.log(sum);
