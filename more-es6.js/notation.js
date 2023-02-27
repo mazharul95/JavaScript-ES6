@@ -20,7 +20,7 @@ const math = student.marks.math;
 const chemistry = student.marks.chemistry;
 
 //console.log(chemistry);
-
+//bracket notation
 const biology = student['marks']['biology'];
 const subject = 'math';
 const subject2 = 'biology';
