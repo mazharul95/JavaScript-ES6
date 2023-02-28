@@ -13,3 +13,11 @@ function loadUsers(){
 function displayUsers(data){
     console.log(data);
 }
+function loadTodos(){
+    fetch('https://jsonplaceholder.typicode.com/todos')
+         .then(res => res.json())
+         .then(data => displayUsers(data));
+}
+function displayTodos(data){
+    console.log(data);
+}
