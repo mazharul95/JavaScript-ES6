@@ -43,7 +43,7 @@ const searchMeal= () =>{
     console.log(searchText);
     loadMeals(searchText);
 }
-//
+
 const loadMealDetails = idMeal =>{
     const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`;
     fetch(url)
@@ -53,6 +53,7 @@ const loadMealDetails = idMeal =>{
         console.log(error)
     })
 }
+
 //async await
 const loadMealDetails2 = async(idMeal) => {
     const url =`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`;
@@ -64,7 +65,6 @@ const loadMealDetails2 = async(idMeal) => {
     catch(error){
         console.log(error);
     }
-
 }
 
 const displayMealDetails = meal =>{
