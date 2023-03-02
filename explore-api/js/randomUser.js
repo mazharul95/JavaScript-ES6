@@ -21,7 +21,7 @@ const displayUser = user =>{
     document.getElementById('dob').innerHTML = dob;
     console.log(user.results[0].dob.date);
 
-    const location = 'Street_number: ' + user.results[0].location.street.number +','+ ' ' + 'Street_name:'+ user.results[0].location.street.name+', ' + '' + 'City: ' + user.results[0].location.city;
+    const location = 'Street_number: ' + user.results[0].location.street.number +','+ ' ' + 'Street_name: '+ user.results[0].location.street.name+', ' + '' + 'City: ' + user.results[0].location.city;
     document.getElementById('location').innerHTML = location;
     console.log(user.results[0].location.street);
 
