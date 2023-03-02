@@ -24,7 +24,7 @@ const displayMeals = meals =>{
             <h5 class="card-title">${meal.strMeal}</h5>
             <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
             <!-- Button trigger modal -->
-            <button onclick="loadMealDetails(${meal.idMeal})" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#mealDetails">
+            <button onclick="loadMealDetails2(${meal.idMeal})" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#mealDetails">
                   Details
             </button>
             </div>
@@ -43,12 +43,28 @@ const searchMeal= () =>{
     console.log(searchText);
     loadMeals(searchText);
 }
-
+//
 const loadMealDetails = idMeal =>{
     const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`;
     fetch(url)
     .then(res =>res.json())
-    .then(data => displayMealDetails(data.meals[0]));
+    .then(data => displayMealDetails(data.meals[0]))
+    .catch(error => {
+        console.log(error)
+    })
+}
+//async await
+const loadMealDetails2 = async(idMeal) => {
+    const url =`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`;
+    try{
+        const res = await fetch(url);
+    const data = await res.json();
+    displayMealDetails(data.meals[0]);
+    }
+    catch(error){
+        console.log(error);
+    }
+
 }
 
 const displayMealDetails = meal =>{
@@ -60,4 +76,4 @@ const displayMealDetails = meal =>{
     `
 }
 
-loadMeals('rice');
+loadMeals('fish');
