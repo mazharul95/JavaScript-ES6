@@ -1,34 +1,37 @@
 //step-1:
-const loadPhones = async (searchText) => {
+const loadPhones = async (searchText, dataLimit) => {
   const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`;
   const response = await fetch(url);
   const data = await response.json();
-  displayPhones(data.data);
+  displayPhones(data.data, dataLimit);
 };
-const displayPhones = (phones) => {
-     //console.log(phones);
-    //step 1:container element
-    const phonesContainer = document.getElementById("phones-container");
-    phonesContainer.textContent ='';
-    
-    //display 20 phones only
-    phones = phones.slice(0,10);
-    
-    //display no phone found
-    const noPhone = document.getElementById('no-found-message');
-    if(phones.length === 0 ){
-      noPhone.classList.remove('d-none');
-    }else{
-      noPhone.classList.add('d-none');
-    }
-    //display all phones
+const displayPhones = (phones,dataLimit) => {
+  //step 1:container element
+  const phonesContainer = document.getElementById('phones-container');
+  phonesContainer.textContent ='';
+  //display 20 phones only
+  const showAll = document.getElementById('show-all');
+  if (dataLimit && phones.length > 10) {
+    phones = phones.slice(0, 10);
+    showAll.classList.remove('d-none');
+  } else {
+    showAll.classList.add('d-none');
+  }
+  //display no phone found
+  const noPhone = document.getElementById('no-found-message');
+  if (phones.length === 0) {
+    noPhone.classList.remove('d-none');
+  } else {
+    noPhone.classList.add('d-none');
+  }
+  //display all phones
 
-    phones.forEach((phone) => {
+  phones.forEach((phone) => {
     console.log(phone);
     //step 2: create child for each element
     const phoneDiv = document.createElement("div");
     phoneDiv.classList.add("col");
-     //step 3: set content of the child
+    //step 3: set content of the child
     phoneDiv.innerHTML = `
      <div class="card p-4">
       <img class="img-fluid" src="${phone.image}" class="card-img-top" alt="...">
@@ -43,24 +46,33 @@ const displayPhones = (phones) => {
   });
   //stop loader
   toggleSpinner(false);
-
 };
-//handle search button click
-document.getElementById('btn-search').addEventListener('click', function(){
-  //Start loader
-  toggleSpinner(true);
-  const searchField = document.getElementById('search-field');
-    const searchText = searchField.value;
-    loadPhones(searchText);
-})
 
-const toggleSpinner = isLoading =>{
-  const loaderSection = document.getElementById('loader');
-  if(isLoading){
+const processSearch = (dataLimit) => {
+  toggleSpinner(true);
+  const searchField = document.getElementById("search-field");
+  const searchText = searchField.value;
+  loadPhones(searchText,dataLimit);
+}
+
+//handle search button click
+document.getElementById("btn-search").addEventListener("click", function () {
+  //Start loader
+  processSearch(10);
+});
+
+const toggleSpinner = (isLoading) => {
+  const loaderSection = document.getElementById("loader");
+  if (isLoading) {
     loaderSection.classList.remove('d-none');
-  }else{
+  } else {
     loaderSection.classList.add('d-none');
   }
-}
+};
+
+//not the best way to load show all
+document.getElementById("btn-show-all").addEventListener("click", function () {
+  processSearch();
+});
 
 //loadPhones();
