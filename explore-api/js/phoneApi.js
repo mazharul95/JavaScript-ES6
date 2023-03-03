@@ -10,6 +10,19 @@ const displayPhones = (phones) => {
     //step 1:container element
     const phonesContainer = document.getElementById("phones-container");
     phonesContainer.textContent ='';
+    
+    //display 20 phones only
+    phones = phones.slice(0,10);
+    
+    //display no phone found
+    const noPhone = document.getElementById('no-found-message');
+    if(phones.length === 0 ){
+      noPhone.classList.remove('d-none');
+    }else{
+      noPhone.classList.add('d-none');
+    }
+    //display all phones
+    
     phones.forEach((phone) => {
     console.log(phone);
     //step 2: create child for each element
@@ -29,11 +42,9 @@ const displayPhones = (phones) => {
     phonesContainer.appendChild(phoneDiv);
   });
 };
-
 document.getElementById('btn-search').addEventListener('click', function(){
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
     loadPhones(searchText);
 })
-
-loadPhones();
+//loadPhones();

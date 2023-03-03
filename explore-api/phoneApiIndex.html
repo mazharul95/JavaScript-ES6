@@ -18,9 +18,9 @@
     <main class="container">
       <section>
         <div class="mb-3 w-50">
-          <label for="exampleFormControlInput1" class="form-label">Search Phones</label>
+          <label for="exampleFormControlInput1" class="form-label"></label>
           <input id="search-field" type="email" class="form-control" id="exampleFormControlInput1" placeholder="Search your phone">
-          <button id="btn-search" class="btn btn-primary">
+          <button id="btn-search" class="btn btn-primary mt-4">
             Search
           </button>
         </div>
@@ -28,7 +28,9 @@
       <!--  display search result -->
       <section>
         <div id="phones-container" class="row row-cols-1 row-cols-md-3 g-4">
-          
+        </div>
+        <div id="no-found-message" class="mt-4 d-none">
+          <h3 class="text-warning">No Phone Found, Please try a new search</h3>
         </div>
       </section>
     </main>
