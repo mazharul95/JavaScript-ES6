@@ -22,7 +22,7 @@ const displayPhones = (phones) => {
       noPhone.classList.add('d-none');
     }
     //display all phones
-    
+
     phones.forEach((phone) => {
     console.log(phone);
     //step 2: create child for each element
@@ -41,10 +41,26 @@ const displayPhones = (phones) => {
     ///step 4: appendChild
     phonesContainer.appendChild(phoneDiv);
   });
+  //stop loader
+  toggleSpinner(false);
+
 };
+//handle search button click
 document.getElementById('btn-search').addEventListener('click', function(){
-    const searchField = document.getElementById('search-field');
+  //Start loader
+  toggleSpinner(true);
+  const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
     loadPhones(searchText);
 })
+
+const toggleSpinner = isLoading =>{
+  const loaderSection = document.getElementById('loader');
+  if(isLoading){
+    loaderSection.classList.remove('d-none');
+  }else{
+    loaderSection.classList.add('d-none');
+  }
+}
+
 //loadPhones();
