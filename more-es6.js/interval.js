@@ -5,7 +5,13 @@ let num = 0;
     console.log(num);
 }, 1000);
 */
+
+// i++ or ++i;
+//x++ or ++x;
 const intervalId = setInterval(() =>{
+    //num++;
+    //console.log(num++);
+    //console.log(num);
     console.log(++num);
     if(num === 10){
         clearInterval(intervalId);
